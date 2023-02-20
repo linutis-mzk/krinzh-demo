@@ -1,0 +1,30 @@
+﻿{
+  "Krinzh":{
+    "delays-in-seconds":
+    [
+      {
+        "id" : "database-get-streamerstatus",
+        "description" : "Delay between database reads to update streamer status at the frontend.",
+        "delay" : 15 }
+    ]
+  },
+  "TwitchAPI": {
+    "token-settings": [
+      {
+        "id" : "token-expiry-threshold",
+        "description" : "Minimum number of seconds before token expiry to request a new token.",
+        "timespan" : 86400 }
+    ],
+    "delays-in-seconds":
+    [
+      {
+        "id" : "api-call-streamerstatus",
+        "description" : "Delay between API calls to Twitch to check if streamers are online.",
+        "delay" : 15 },
+      {
+        "id" : "database-get-streamers",
+        "description" : "Delay between database reads to check if there are new streamers added that need to be tracked.",
+        "delay" : 15 }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krinzh", "Krinzh\Krinzh.csproj", "{73A54260-BF7C-49AA-AA1E-59828FA67A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{20DF2670-DE88-4140-8E6E-70183DFB2B8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchAPI", "TwitchAPI\TwitchAPI.csproj", "{CBDF5DE2-BA34-4D38-A0FD-DC91D542E67F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73A54260-BF7C-49AA-AA1E-59828FA67A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73A54260-BF7C-49AA-AA1E-59828FA67A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73A54260-BF7C-49AA-AA1E-59828FA67A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73A54260-BF7C-49AA-AA1E-59828FA67A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DF2670-DE88-4140-8E6E-70183DFB2B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DF2670-DE88-4140-8E6E-70183DFB2B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DF2670-DE88-4140-8E6E-70183DFB2B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DF2670-DE88-4140-8E6E-70183DFB2B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDF5DE2-BA34-4D38-A0FD-DC91D542E67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDF5DE2-BA34-4D38-A0FD-DC91D542E67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDF5DE2-BA34-4D38-A0FD-DC91D542E67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDF5DE2-BA34-4D38-A0FD-DC91D542E67F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

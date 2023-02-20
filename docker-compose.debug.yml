@@ -1,0 +1,81 @@
+version: '3.4'
+
+
+
+networks:
+  website-net:
+    driver: bridge
+    
+    
+services:
+  webapp-container:
+    build: .
+    env_file:
+      - .env
+    container_name: backend_debug
+    image: backend_image
+    mem_limit: "2g"
+    depends_on:
+      - postgres_db
+    ports:
+      - "7000:80"
+      - "7001:443"
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${DEBUG_CERT_PASS}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certificates/debug/Krinzh.pfx
+      - ASPNETCORE_HTTPS_PORT=443
+      - POSTGRES_CONN_STRING=host=host.docker.internal;Database=dev_database;Username=${POSTGRES_USER};Password=${POSTGRES_PASS}
+    volumes:
+      - "D://certificates//debug:/certificates/debug"
+      - ".//settings.json:/settings/settings.json"
+    secrets:
+      - postgres_secrets
+    networks:
+      - website-net
+  
+  twitchapi-service:
+    container_name: twitchapi_service
+    build:
+      context: .
+      dockerfile: ./TwitchAPI/Dockerfile
+    image: twitchapi_service
+    restart: always
+    mem_limit: "2g"
+    depends_on:
+      - postgres_db
+    environment:
+      - POSTGRES_CONN_STRING=host=host.docker.internal;Database=dev_database;Username=${POSTGRES_USER};Password=${POSTGRES_PASS}
+    volumes:
+      - ".//settings.json:/settings/settings.json"
+    secrets:
+      - postgres_secrets
+    networks:
+      - website-net
+  
+  postgres_db:
+    container_name: postgres_db
+    image: postgres:15.1
+    restart: always
+    mem_limit: "2g"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+      - POSTGRES_DB=dev_database
+    ports:
+      - '5432:5432'
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+      - ".//Krinzh//Database//Scripts:/docker-entrypoint-initdb.d/"
+    networks:
+      - website-net
+     
+     
+secrets:
+  postgres_secrets:
+    file: secrets.json
+    
+volumes:
+  postgres_data:
+    driver: local

@@ -1,0 +1,174 @@
+@use '../../../common/colors.module';
+
+
+
+
+$margin-vertical: 3%;
+$margin-horizontal: 14%;
+$border-radius: 20px;
+$list-margin-horizontal: 8px;
+$list-margin-vertical: 8px;
+$padding-details-view: 10px;
+
+
+.outerDiv{
+  display:flex;
+  flex-direction: row;
+  margin-top: 2%;
+  background-color: colors.$activitylist;
+  border-radius: $border-radius;
+  margin:$margin-vertical;
+  margin-left: $margin-horizontal;
+  margin-right: $margin-horizontal;
+ 
+
+  // Shadow under activity list box
+  -webkit-box-shadow: 0 8px 12px -10px colors.$activitylist-shadow;
+	   -moz-box-shadow: 0 8px 12px -10px colors.$activitylist-shadow;
+	        box-shadow: 0 8px 12px -10px colors.$activitylist-shadow;
+}
+
+ul{ 
+  padding: 0; 
+  overflow-y: scroll;
+  transition: width 0.5s ease-out;
+
+
+  // Hides scrollbar, but maintains functionality
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  margin:0;
+  margin-top: $list-margin-vertical;
+  margin-bottom: $list-margin-vertical;
+  margin-left: $list-margin-horizontal;
+  margin-right: $list-margin-horizontal;
+  
+}
+
+.overflow{
+  text-overflow: clip;
+  overflow:hidden;
+}
+.infoDiv{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background-color: white;
+  
+  .infoHeader{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin-right:10px;
+    margin:$padding-details-view;
+    
+
+    
+    .infoHeaderLeft{
+      display: flex;
+      flex-direction: row;  
+      justify-content: left;
+      padding:0;
+      @extend .overflow;
+      
+
+      .bulletPoint{
+        margin:auto;
+        margin-left:5px;
+        margin-right:5px;
+        border-radius: 5px;
+        background-color: red;
+        width: 6px;
+        height: 6px;
+      }
+    }
+    .infoHeaderRight{
+      @extend .infoHeaderLeft;
+      margin-left:auto;
+    }
+  }
+  h3{
+    margin: $padding-details-view;
+    max-height:20%;
+    text-overflow: clip;
+    overflow:hidden;
+  }
+  p{
+    flex:1;
+    font-size:12px;
+    margin: $padding-details-view;
+    white-space: nowrap;
+  }
+  .infoButtonContainer{
+    display:flex;
+    flex:1;    
+    max-height: 15%;
+    margin: $padding-details-view;
+    margin-left:auto;
+    gap:5px;
+    padding:8px;
+    overflow:clip;
+    
+  }
+}
+
+.altText{
+  display: flex;
+  margin:auto;
+  
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+ 
+}
+
+.popupDelete{
+
+  position: absolute;
+  display: table-cell;
+  top:0;
+  left: 0;
+  border: 0;
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  padding:10px;
+  text-align: center;
+  vertical-align: middle;
+  visibility: visible;
+
+  &:hover{
+    background-color: grey;
+  }
+}
+.buttonStandard{
+  border: 0;
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  text-overflow: clip;
+  padding: 5px;
+  background-image: url("../../../images/bin_closed.png");
+  background-repeat: no-repeat;
+  background-size: 72%;
+  background-position: center;
+  width:40px;
+  height:40px;
+  aspect-ratio: 1;
+
+
+  &_delete{ // target child class
+    @extend .buttonStandard;
+    background-image: url("../../../images/bin_closed.png");
+  }
+  &_view{
+    @extend .buttonStandard;
+    background-image: url("../../../images/eye_open.png");
+  }
+  &:hover{
+    background-color: grey;
+  }
+}

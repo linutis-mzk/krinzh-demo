@@ -1,0 +1,15 @@
+@use '../../../common/colors.module';
+@use '../../../common/colors_homepage.module';
+
+
+$margin: 10%;
+$padding: 20px;
+$border-radius: 20px;
+
+
+.creatorBioBox{
+  background: colors_homepage.$div-creatorBioBox-background;
+  margin: $margin;
+  padding: $padding;
+  border-radius: $border-radius;
+}

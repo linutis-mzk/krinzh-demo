@@ -1,0 +1,133 @@
+@use '../../../common/colors.module';
+
+
+
+
+
+
+.outer_div{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: $side_margin;
+  margin-right: $side_margin;
+  height:100%;
+
+  header{
+    padding:20px;
+
+    .monthLabel{
+      background-color: white;
+      padding: 10px;
+      padding-left: 45px;
+      padding-right: 45px;
+      border-radius: 20px;
+    }
+  }
+
+  .table{
+    table-layout: fixed;
+    empty-cells: show;
+    border-bottom: solid 1px;
+    border-style: none;
+    border-spacing: 0;
+    height:100%;
+    
+    th{
+      background-color: colors.$calendar-th ; 
+    }
+    td {
+      width: $column-width;
+      
+      text-align: center;
+      vertical-align: middle;
+      height:inherit;
+
+      border-style: solid;
+      border-color: colors.$calendar-th;
+      border-width: 1px;
+      user-select: none;
+      border-width: 1.8px;
+      border-right: none;
+      border-top: none;
+      border-color: white white  silver rgb(224,224,224, 0.5);
+      background: linear-gradient(195deg,rgb(232,232,232,0.9), rgb(255,255,255,0.65) 75%);
+      color: rgb(28, 61, 113);
+      font-weight: bold;
+    }
+    td:hover{
+      background-color: silver;
+    }
+    .empty_td{
+      color: transparent;
+      background: none;
+      background-color: rgba(216, 216, 216, 0.77);
+      user-select: none;
+    }
+  }
+  .button_container{
+    display: flex;
+    margin-left:auto;
+    margin-right: auto;
+    flex-direction: row;
+    padding:20px;
+    gap: 10%;
+
+
+    button{
+      display: inline-flex;
+      padding: 15px;      
+      border: none;
+      width: fit-content;
+      *:focus {
+        outline: none;
+      }
+      background: colors.$background;
+
+
+      background: radial-gradient(circle at center, colors.$calendar-buttons 0%,  colors.$calendar-buttons 66%, colors.$background 70%, colors.$background 100%);
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 0% 0%;
+      transition: background-size 0.2s cubic-bezier(.95, .32, .37, 1.21);
+
+      img{
+        width: 50px;
+        border-radius: 50%;
+        user-select: none;   
+        filter: brightness(250%);
+    
+            
+      } 
+
+      &:hover {
+        background-size: 100% 100%;
+
+        img{         
+          animation-fill-mode: forwards;
+          animation-name: ch_brightness;
+          animation-duration: 0.5s;
+          
+
+          @keyframes ch_brightness {
+            from {filter: brightness(250%);}
+            to {filter: brightness(600%);}
+          }
+        }
+      }   
+      
+    
+      img#imageSelectRight{
+        transform: scaleX(-1);
+      } 
+    }
+    button#buttonSelectRight{
+      justify-content: center;
+      width:fit-content;
+    }
+    button#buttonSelectLeft{
+      justify-content: center;
+      width:fit-content;
+    }
+  }
+}

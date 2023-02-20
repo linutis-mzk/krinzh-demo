@@ -1,0 +1,35 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es2017",
+    "declaration": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "esModuleInterop":true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "components": ["Frontend/components/*"],
+      "common": ["Frontend/common/*"]
+    },
+    "outDir": "Public/js"
+  },
+  "typeRoots": [
+    "node_modules/@types",
+    "Frontend/types"
+  ],
+  "types":[
+    "jest",
+  ],
+  "include": [
+    "Frontend/**/*"
+  ],
+  "exclude": [
+    "node_modules", 
+    "tests",
+    "Public/**/*"
+  ]
+}

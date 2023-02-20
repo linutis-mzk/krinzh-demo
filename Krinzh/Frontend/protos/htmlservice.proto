@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "GrpcServices";
+package grpcservices;
+
+service HTMLService {
+  rpc GetIndex (google.protobuf.Empty) returns (HTMLResponse);
+}
+
+message HTMLResponse {
+  string content = 1;
+}

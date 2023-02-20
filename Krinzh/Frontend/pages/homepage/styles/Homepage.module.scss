@@ -1,0 +1,124 @@
+@use '../../../common/colors.module';
+@use '../../../common/colors_homepage.module';
+@use '../../../common/dimensions.module';
+
+
+
+$header-height: 26px;
+$header-font-size: 16px;
+$some-button-selected: false;
+
+// dimensions
+$button-width: 75%;
+
+// padding & margins
+$header-padding: 2px;
+$button-padding: calc(100% - #{$button-width});
+
+// animations
+$header-anim-duration: 16s;
+$button-anim-duration: 0.5s;
+$button-leave-duration: 1.4s;
+
+
+
+.header{
+  background-color: colors_homepage.$header-background;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  justify-content: left;
+  align-items: center;
+  height: $header-height;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  
+  label{
+    width: inherit;
+    font-size: $header-font-size;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: anim-billboard-text $header-anim-duration linear infinite;
+  }
+}
+.parentDiv{
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.buttonsContainer{
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  
+  @mixin user-select-button {
+    user-select: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 40px;
+    color: darkslategray;
+    border-style: none;
+    text-align: center;
+    width: $button-width;
+    height: 145px;
+    opacity: 97%;
+    background-color: white;
+    transition: width $button-anim-duration;
+    
+    &:hover:enabled{
+      width: 80%;
+      background-color: #00a8c6;
+    }
+    &.active{
+      background-color: #00a8c6;
+    }
+  }
+
+  button:nth-child(even){
+    @include user-select-button;
+    margin: 5px 0px 5px auto;
+    border-radius: dimensions.$border-radius-standard 0 0 dimensions.$border-radius-standard;
+    padding-right: $button-padding;
+    &:disabled{
+      animation: anim-button-leave-right $button-leave-duration ease-in-out forwards; ;
+    }
+  }
+  button:nth-child(odd){
+    @include user-select-button;
+    margin: 5px auto 5px 0px;
+    border-radius: 0 dimensions.$border-radius-standard dimensions.$border-radius-standard 0;
+    padding-left: $button-padding;
+    &:disabled{
+      animation: anim-button-leave-left $button-leave-duration ease-in-out forwards;
+    }
+  }
+
+}
+
+@keyframes anim-billboard-text {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes anim-button-leave-left{
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@keyframes anim-button-leave-right{
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+

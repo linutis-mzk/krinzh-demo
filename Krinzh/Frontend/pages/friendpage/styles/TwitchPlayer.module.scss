@@ -1,0 +1,16 @@
+@use '../../../common/colors.module';
+@use '../../../common/dimensions.module';
+@use '../../../common/fonts.module';
+
+
+
+
+.twitchPlayer {
+  display: inline-block;
+  border-radius: dimensions.$border-radius-bigger;
+  margin-top: 8px;
+  padding: 0;
+  margin-bottom: auto;
+  overflow: hidden;
+  background-color: rgb(30,30,30);
+}

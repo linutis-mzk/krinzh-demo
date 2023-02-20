@@ -1,0 +1,166 @@
+@use '../../../common/colors.module';
+@use '../../../common/dimensions.module';
+@use '../../../common/fonts.module';
+@font-face {
+  font-family: 'streamer-card-font';
+  src: url('../../../fonts/maven-pro/mavenPro-Regular.ttf');
+}
+
+
+$sidepanel-width: 200px;
+$card-height: 55px;
+$button-hover-duration: 2s;
+$status-bar-height: 8px;
+
+
+.rootDiv{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.streamerCard{
+  display: inline-block;
+  border-radius: dimensions.$border-radius-standard;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 25%, rgba(116,255,160,1) 100%);
+  -webkit-box-shadow: 1px 3px 2px -1px rgba(0,0,0,0.08);
+  -moz-box-shadow: 1px 3px 2px -1px rgba(0,0,0,0.08);
+  box-shadow: 1px 3px 2px -1px rgba(0,0,0,0.08);
+  padding-bottom: $status-bar-height;
+  margin-bottom: 7px;
+  margin-right: 12px;
+  margin-left: 12px;
+  
+  &_offline{
+    @extend .streamerCard;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 25%, rgba(255,116,160,1) 100%);
+  }
+  &:hover{
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+}
+.streamerCardInner{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border-radius:  dimensions.$border-radius-standard;
+  max-height: $card-height;
+  background-color: rgba(248, 248, 248, 1);
+  
+  img {
+    max-width: 25%;
+    aspect-ratio: 1/1;
+    border-radius: dimensions.$border-radius-standard;
+  }
+  .streamerName{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'streamer-card-font', Fallback, sans-serif;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+}
+
+.streamerSidePanel{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  width: $sidepanel-width;
+  border-width: 20px;
+  border-color: whitesmoke;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-radius: dimensions.$border-radius-bigger;
+  background-color: rgba(210, 210, 210, 0.52);
+  
+  .labelContainer{
+    background-color: whitesmoke;
+    text-align: center;
+    padding-bottom: 10px;
+    border-style: solid;
+    border-color: rgb(251,251,251);
+    border-width: 1.5px;
+    border-radius: 0;
+    border-radius: 0 0 dimensions.$border-radius-standard dimensions.$border-radius-standard;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    
+    label{
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      color: darkslategray;
+    }
+  }
+  .cardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+
+    &_unauthorised{
+      margin:auto;
+      height: 200px;
+
+
+      .buttonTwitchLogin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        img{
+          width: 25%;
+          aspect-ratio: 16/9;
+        }
+        a{
+          padding: 10px;
+          border-radius: dimensions.$border-radius-standard;
+          font-weight: bold;
+          text-transform: uppercase;
+          -webkit-user-select: none; /* Safari */
+          -ms-user-select: none; /* IE 10 and IE 11 */
+          user-select: none; /* Standard syntax */
+          
+          &:hover{
+           background-color: white;
+          }
+        }
+        border-style: none;
+      }
+    }
+  }
+}
+
+
+@keyframes anim-button-hover {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

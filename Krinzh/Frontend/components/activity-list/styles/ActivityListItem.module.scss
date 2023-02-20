@@ -1,0 +1,43 @@
+@use '../../../common/colors.module';
+
+$item-height: 50px;
+$item-border-radius: 5px;
+$bullet-point-width: 7px;
+$bullet-point-margin: calc(($item-height - $bullet-point-width)/2);
+
+.outerLi{
+  display: flex;
+  padding:0;
+  background-color: colors.$calendar-th;
+  flex-direction: row;
+  border-radius: $item-border-radius;
+  margin-top:1px;
+
+  // &:first-child{
+  //   border-radius: $item-border-radius;
+  //   border-top-left-radius: 18px;
+  //   border-top-right-radius: 18px;
+  // }
+  &:lastChild{
+    border-radius: $item-border-radius;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+}
+.outerLiActive{
+  @extend .outerLi;
+  background-color: colors.$activity-selected;
+}
+
+.bulletPoint{
+  margin: $bullet-point-margin;
+  border-radius: 3px;
+  background-color: red;
+  width: $bullet-point-width;
+  height: $bullet-point-width;
+}
+p{
+  margin:auto;
+  margin-left:5px;
+  font-size: 14px;
+}

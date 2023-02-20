@@ -1,0 +1,3 @@
+﻿0. npm run bundle
+1. Build Docker Image.
+2. Run docker-compose
